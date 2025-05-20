@@ -4,6 +4,7 @@ import pandas as pd
 from mysql.connector import Error
 import os
 from dotenv import load_dotenv
+load_dotenv()
 
 # MySQL 테마 CSS 적용
 st.markdown("""
@@ -145,8 +146,6 @@ st.markdown("""
 
 st.markdown("<p>classicmodels 데이터베이스를 사용한 SQL 문제를 풀어보세요!</p>", unsafe_allow_html=True)
 
-load_dotenv()
-
 # 데이터베이스 연결 정보
 # DB_CONFIG = {
 #     "host": os.getenv("DB_HOST"),
@@ -154,12 +153,20 @@ load_dotenv()
 #     "user": os.getenv("DB_USER"),
 #     "password": os.getenv("DB_PASSWORD")
 # }
+# DB_CONFIG = {
+#     "host":"centerbeam.proxy.rlwy.net",
+#     "port":int(os.getenv("DB_PORT")),
+#     "user":os.getenv("DB_USER"),
+#     "password":os.getenv("DB_PASSWORD"),
+#     "database":os.getenv("DB_NAME")
+# }
+
 DB_CONFIG = {
-    "host": os.getenv("DB_HOST"),
-    "port": int(os.getenv("DB_PORT", 3306)),  # 기본값은 3306
-    "database": os.getenv("DB_DATABASE"),
-    "user": os.getenv("DB_USER"),
-    "password": os.getenv("DB_PASSWORD")
+    "host": st.secrets["DB_HOST"],
+    "port": st.secrets["DB_PORT"],
+    "user": st.secrets["DB_USER"],
+    "password": st.secrets["DB_PASSWORD"],
+    "database": st.secrets["DB_NAME"]
 }
 
 
