@@ -148,12 +148,20 @@ st.markdown("<p>classicmodels 데이터베이스를 사용한 SQL 문제를 풀�
 load_dotenv()
 
 # 데이터베이스 연결 정보
+# DB_CONFIG = {
+#     "host": os.getenv("DB_HOST"),
+#     "database": os.getenv("DB_DATABASE"),
+#     "user": os.getenv("DB_USER"),
+#     "password": os.getenv("DB_PASSWORD")
+# }
 DB_CONFIG = {
     "host": os.getenv("DB_HOST"),
+    "port": int(os.getenv("DB_PORT", 3306)),  # 기본값은 3306
     "database": os.getenv("DB_DATABASE"),
     "user": os.getenv("DB_USER"),
     "password": os.getenv("DB_PASSWORD")
 }
+
 
 # 데이터베이스 연결 함수
 def create_connection():
